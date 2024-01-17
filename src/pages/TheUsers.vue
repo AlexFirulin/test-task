@@ -10,10 +10,10 @@
         <input id="email" type="text" v-model="searchEmail">
       </div>
     </div>
-    <ul>
+    <ul v-if="filteredUsers.length">
     <li v-for="user in filteredUsers" :key="user.id">
       <img :src="user.avatar" alt="" />
-      <div class="user-name" @click="showDetails(user)">{{ user.first_name }}</div>
+      <div class="user-name" @click="showDetails(user)"><u>{{ user.first_name }}</u></div>
       <div>{{ user.email }}</div>
       <button class="call-to-action" @click="deleteUser()">Delete user</button>
       <userDetailsVue
@@ -27,6 +27,9 @@
       ></userDetailsVue>
     </li>
   </ul>
+  <div v-else>
+    No users to your search params
+  </div>
   </div>
 </template>
 
@@ -70,13 +73,15 @@ const filteredUsers = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex: 1;
+  background: aliceblue;
 }
 .search {
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
   padding: 20px;
-  width: 400px
+  width: 400px;
 }
 .input-search {
   display: flex;
@@ -98,6 +103,8 @@ ul {
   padding: 20px;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   position: relative;
 }
@@ -106,7 +113,6 @@ ul > li {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  align-items: flex-start;
   padding: 15px;
   box-sizing: border-box;
   border: 1px solid #ddd;
@@ -114,6 +120,10 @@ ul > li {
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out;
+}
+ul > li:hover {
+  flex: 1;
+  max-width: 40%;
 }
 
 .user-details {

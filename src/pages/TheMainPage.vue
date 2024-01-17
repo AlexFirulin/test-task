@@ -21,17 +21,18 @@ a {
 
 .user-default-views {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
 }
 
 .navigation {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  justify-content: center;
+  align-self: stretch;
+  align-items: stretch;
   width: 200px;
+
 }
 
 .nav-wrapper {
@@ -51,7 +52,7 @@ a {
   text-align: center;
   color: #FFF;
   font-family: Poppins;
-  font-size: 16;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
